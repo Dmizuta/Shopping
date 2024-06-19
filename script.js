@@ -1,36 +1,31 @@
-function calculateTotalCost(item) {
+function calculateRatio(item) {
     const price = parseFloat(document.getElementById(`price${item}`).value) || 0;
-    const quantity = parseFloat(document.getElementById(`quantity${item}`).value) || 0;
-    const totalCost = (price * quantity).toFixed(2);
-    document.getElementById(`totalCost${item}`).textContent = totalCost;
+    const quantity = parseFloat(document.getElementById(`quantity${item}`).value) || 1; // Default to 1 if quantity is not provided
+    const ratio = (price / quantity).toFixed(2);
+    document.getElementById(`ratio${item}`).textContent = ratio;
 }
 
 function compareItems() {
-    // Calculate and display price/quantity ratios
     const items = ['A', 'B', 'C', 'D', 'E'];
+
+    let minTotalCost = Infinity;
+    let bestItem = '';
 
     items.forEach(item => {
         const price = parseFloat(document.getElementById(`price${item}`).value) || 0;
-        const quantity = parseFloat(document.getElementById(`quantity${item}`).value) || 0;
+        const quantity = parseFloat(document.getElementById(`quantity${item}`).value) || 1; // Default to 1 if quantity is not provided
+        const totalCost = price * quantity;
+
+        if (totalCost < minTotalCost) {
+            minTotalCost = totalCost;
+            bestItem = `Item ${item}`;
+        }
+
         const ratio = (price / quantity).toFixed(2);
         document.getElementById(`ratio${item}`).textContent = ratio;
     });
 
-    // Compare items based on the ratios (example: find item with highest ratio)
-    let comparisonResult = '';
-    let maxRatio = 0;
-    let maxItem = '';
+    const comparisonResult = `The best value for money is ${bestItem} with a total cost of ${minTotalCost.toFixed(2)} R$.`;
 
-    items.forEach((item, index) => {
-        const ratio = parseFloat(document.getElementById(`ratio${item}`).textContent);
-        if (ratio > maxRatio) {
-            maxRatio = ratio;
-            maxItem = `Item ${item}`;
-        }
-    });
-
-    comparisonResult = `The best value for money is ${maxItem} with a ratio of ${maxRatio} R$/unit.`;
-
-    // Display comparison result
     document.getElementById('comparisonResult').textContent = comparisonResult;
 }
