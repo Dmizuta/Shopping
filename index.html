@@ -3,17 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Excel Formula Calculator</title>
+    <title>Shopping Comparison</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="calculator">
-        <h1>Excel Formula Calculator</h1>
-        <input type="number" id="D4" placeholder="Enter value for D4">
-        <input type="number" id="D5" placeholder="Enter value for D5">
-        <input type="number" id="D6" placeholder="Enter value for D6">
-        <button onclick="calculate()">Calculate</button>
-        <p id="result"></p>
+    <div class="shopping-list">
+        <h1>Shopping Comparison</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price (R$)</th>
+                    <th>Quantity</th>
+                    <th>Total Cost (R$)</th>
+                    <th>Price/Quantity Ratio (R$/unit)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" id="itemA" placeholder="Item A"></td>
+                    <td><input type="number" id="priceA" placeholder="Price"></td>
+                    <td><input type="number" id="quantityA" placeholder="Quantity" oninput="calculateTotalCost('A')"></td>
+                    <td><span id="totalCostA">0.00</span></td>
+                    <td><span id="ratioA"></span></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="itemB" placeholder="Item B"></td>
+                    <td><input type="number" id="priceB" placeholder="Price"></td>
+                    <td><input type="number" id="quantityB" placeholder="Quantity" oninput="calculateTotalCost('B')"></td>
+                    <td><span id="totalCostB">0.00</span></td>
+                    <td><span id="ratioB"></span></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="itemC" placeholder="Item C"></td>
+                    <td><input type="number" id="priceC" placeholder="Price"></td>
+                    <td><input type="number" id="quantityC" placeholder="Quantity" oninput="calculateTotalCost('C')"></td>
+                    <td><span id="totalCostC">0.00</span></td>
+                    <td><span id="ratioC"></span></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="itemD" placeholder="Item D"></td>
+                    <td><input type="number" id="priceD" placeholder="Price"></td>
+                    <td><input type="number" id="quantityD" placeholder="Quantity" oninput="calculateTotalCost('D')"></td>
+                    <td><span id="totalCostD">0.00</span></td>
+                    <td><span id="ratioD"></span></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="itemE" placeholder="Item E"></td>
+                    <td><input type="number" id="priceE" placeholder="Price"></td>
+                    <td><input type="number" id="quantityE" placeholder="Quantity" oninput="calculateTotalCost('E')"></td>
+                    <td><span id="totalCostE">0.00</span></td>
+                    <td><span id="ratioE"></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <button onclick="compareItems()">Compare Items</button>
+        <div id="comparisonResult"></div>
     </div>
     <script src="script.js"></script>
 </body>
