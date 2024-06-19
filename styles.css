@@ -8,19 +8,39 @@ body {
     background-color: #f0f0f0;
 }
 
-.calculator {
+.shopping-list {
     background: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     text-align: center;
+    width: 80%;
+    max-width: 800px;
+    margin-top: 50px;
 }
 
-input {
-    margin: 10px;
-    padding: 10px;
-    font-size: 1rem;
-    width: calc(100% - 22px);
+table {
+    width: 100%;
+    margin-bottom: 20px;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+input[type="text"], input[type="number"] {
+    width: calc(100% - 16px); /* Adjust width to fit table cells */
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 button {
@@ -31,13 +51,21 @@ button {
     color: #fff;
     border: none;
     border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-#result {
+#comparisonResult {
     margin-top: 20px;
     font-size: 1.2rem;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    table th, table td {
+        padding: 10px;
+    }
 }
